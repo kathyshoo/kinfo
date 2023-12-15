@@ -4,7 +4,7 @@ import psutil
 import time
 import requests
 import tqdm
-from zipfile import ZipFile 
+import patoolib
 
 toro_toro = """
             ,.  ,.
@@ -89,8 +89,7 @@ def download_crack():
     if not os.path.isfile(path_game + '\\steam_api64_o.dll'):
         os.rename(path_game + '\\steam_api64.dll', path_game + '\\steam_api64_o.dll')
     
-    with ZipFile('crack.zip', 'r') as archive:
-        archive.extractall(path_game)
+    patoolib.extract_archive(archive="crack.zip", outdir=path_game)
 
     os.remove('crack.zip')
     print("ready... returning to main menu")
@@ -130,8 +129,7 @@ def download_dlc():
     if not os.path.isfile(path_game + '\\steam_api64_o.dll'):
         os.rename(path_game + '\\steam_api64.dll', path_game + '\\steam_api64_o.dll')
     
-    with ZipFile('crack.zip', 'r') as archive:
-        archive.extractall(path_game)
+    patoolib.extract_archive(archive="crack.zip", outdir=path_game)
 
     os.remove('crack.zip')
     print("dlc crack was installed... starting to download dlcs")
@@ -157,8 +155,7 @@ def download_dlc():
 
     print(os.path.isfile('all_dlcs.zip'))
 
-    with ZipFile('all_dlcs.zip', 'r') as archive:
-        archive.extractall('C:\\Test', pwd="cs.rin.ru")
+    patoolib.extract_archive(archive="all_dlcs.rar", outdir=path_game, password="cs.rin.ru")
     
     remo = input('are u want to remove a temp archive? [y]')
 
